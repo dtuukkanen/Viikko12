@@ -12,22 +12,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ItemListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
-    private Context context;
     private ArrayList<Item> items = new ArrayList<>();
 
-    public ItemListAdapter(Context context, ArrayList<Item> items) {
-        this.context = context;
+    public ItemListAdapter(ArrayList<Item> items) {
         this.items = items;
     }
 
     @NonNull
     @Override
-    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ItemViewHolder(LayoutInflater.from(context).inflate(R.layout.item_view, parent, false));
+    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.item_view, viewGroup, false);
+
+        return new ItemViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, final int position) {
         holder.notes.setText(items.get(position).getNotes());
 
         holder.removeImage.setOnClickListener(view -> {
@@ -42,7 +43,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
                 Item item = Storage.getInstance().getItem(pos);
                 item.setNotes(holder.editNotes.getText().toString());
                 holder.editNotes.setVisibility(View.GONE);
-                notifyDataSetChanged();
+                notifyItemChanged(pos);
             } else {
                 holder.editNotes.setVisibility(View.VISIBLE);
             }

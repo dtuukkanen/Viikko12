@@ -37,22 +37,4 @@ public class Storage {
     public ArrayList<Item> getItems() {
         return items;
     }
-
-    public void sortByName() {
-        Collections.sort(items, new Comparator<Item>() {
-            @Override
-            public int compare(Item item1, Item item2) {
-                return item1.getNotes().compareTo(item2.getNotes());
-            }
-        });
-    }
-
-    public void sortByDate() {
-        Collections.sort(items, new Comparator<Item>() {
-            @Override
-            public int compare(Item item1, Item item2) {
-                return item1.getDate().compareTo(item2.getDate());
-            }
-        });
-    }
 }

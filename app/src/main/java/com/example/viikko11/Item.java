@@ -7,11 +7,13 @@ public class Item {
     private String itemNotes;
     private double id;
     private Date date;
+    private boolean importantItem;
 
-    public Item(String itemNotes) {
+    public Item(String itemNotes, boolean importantItem) {
         this.itemNotes = itemNotes;
         id = Math.random();
         date = new Date();
+        this.importantItem = importantItem;
     }
 
     public void setNotes(String itemNotes) {
