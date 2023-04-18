@@ -16,8 +16,6 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
     public ItemViewHolder(@NonNull View itemView) {
         super(itemView);
         notes = itemView.findViewById(R.id.textNotes);
-        editImage = itemView.findViewById(R.id.imgEdit);
-        removeImage = itemView.findViewById(R.id.imgRemove);
         editNotes = itemView.findViewById(R.id.editNotes);
     }
 }

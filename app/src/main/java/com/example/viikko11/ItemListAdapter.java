@@ -30,24 +30,6 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, final int position) {
         holder.notes.setText(items.get(position).getNotes());
-
-        holder.removeImage.setOnClickListener(view -> {
-            int pos = holder.getAdapterPosition();
-            Storage.getInstance().removeItem(items.get(pos).getId());
-            notifyItemRemoved(pos);
-        });
-
-        holder.editImage.setOnClickListener(view -> {
-            int pos = holder.getAdapterPosition();
-            if (holder.editNotes.getVisibility() == View.VISIBLE) {
-                Item item = Storage.getInstance().getItem(pos);
-                item.setNotes(holder.editNotes.getText().toString());
-                holder.editNotes.setVisibility(View.GONE);
-                notifyItemChanged(pos);
-            } else {
-                holder.editNotes.setVisibility(View.VISIBLE);
-            }
-        });
     }
 
     @Override

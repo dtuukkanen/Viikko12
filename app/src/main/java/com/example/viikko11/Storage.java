@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 public class Storage {
     private ArrayList<Item> items = new ArrayList<>();
+    ArrayList<Item> supers = new ArrayList<>();
     private static Storage storage = null;
 
     public static Storage getInstance() {
@@ -17,6 +18,9 @@ public class Storage {
 
     public void addItem(Item item) {
         items.add(item);
+        if (item.isImportantItem()) {
+            supers.add(item);
+        }
     }
 
     public void removeItem(double id) {
@@ -36,5 +40,9 @@ public class Storage {
 
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    public ArrayList<Item> getSupers() {
+        return supers;
     }
 }

@@ -31,6 +31,10 @@ public class Item {
     public Date getDate() {
         return date;
     }
+
+    public boolean isImportantItem() {
+        return importantItem;
+    }
 }
 
 
